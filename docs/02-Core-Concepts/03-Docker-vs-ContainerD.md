@@ -2,21 +2,69 @@
 
 In this section we will look at the differences between Docker and ContainerD
 
+`containerd` and `Docker` are both tools related to containerization, but they serve different purposes within the container ecosystem. Here's a comparison between `containerd` and `Docker`:
 
-So you’re going to come across Docker and `containerd` many times. Going forward, when you read older blogs or documentation pages , you’ll see Docker mentioned along with Kubernetes and when you read newer blogs you’ll see `containerd` and you’ll wonder what the difference is between the two. And there are a few CLI tools like `ctr`, `crictl` or `nerdctl` and you’ll wonder what are these CLI tools and which one should you be using, so that’s’ what I’m going to explain.
+### Docker:
 
-![](../../images/02-03-01.png)
+- **Definition**: Docker is a platform for developing, shipping, and running applications in containers.
+  
+- **Components**:
+  - **Docker Engine**: The core tool that allows you to build and run containers.
+  - **Docker CLI**: Command-line interface for interacting with Docker Engine.
+  - **Docker Compose**: Tool for defining and running multi-container Docker applications.
+  - **Docker Hub**: Public registry for storing and sharing Docker images.
+  
+- **Features**:
+  - **Container Management**: Docker provides tools to build, run, and manage containers.
+  - **Image Management**: Ability to build, share, and pull Docker images from registries.
+  - **Networking**: Docker provides networking features to connect containers.
+  - **Volumes**: Docker allows you to manage persistent data using volumes.
+  - **Orchestration**: While not a part of Docker itself, Docker can be integrated with tools like Docker Swarm or Kubernetes for container orchestration.
 
-Let’s go back in time to the beginning of the container era. In the beginning, there was just Docker. There were a few other tools like Rocket ([rkt](https://www.redhat.com/en/topics/containers/what-is-rkt)), but Docker’s user experience made working with containers super simple and hence Docker became the most dominant container tool. And then came Kubernetes to orchestrate Docker so Kubernetes was built to orchestrate Docker specifically in the beginning so Docker and Kubernetes were tightly coupled and back then Kubernetes only worked with Docker and didn't support any other container solutions.
+- **Use Case**:
+  - Developers and DevOps teams use Docker for creating and managing containers to package applications and their dependencies into a standardized unit for development, shipment, and deployment.
 
-![](../../images/02-03-02.png)
+### containerd:
 
-And then Kubernetes grew in popularity as a container orchestrator and now other container runtimes like `rkt` wanted in so Kubernetes users needed it to work with container runtimes that are other than just Docker, and so Kubernetes introduced an interface called container runtime interface or CRI, so CRI allowed any vendor to work as a container runtime for Kubernetes as long as they adhere to the OCI standards.
-So OCI stands for Open Container Initiative and it consists of an image spec and a runtime spec. Image spec means the specifications on how an image should be built. It defines the specifications on how an image should be built and the runtime spec defines the standards on how any container runtime should be developed so keeping these standards in mind, anyone can build a container runtime that can be used by anybody to work with Kubernetes, so that was the idea.
+- **Definition**: `containerd` is an industry-standard core container runtime, designed to be embedded into larger container systems such as Docker, Kubernetes, or CRI-O.
+  
+- **Role**:
+  - `containerd` is an essential component that manages the container lifecycle, image distribution, and low-level container execution.
+  - It is more focused on the runtime aspects of containers and less on the development and management tools provided by Docker.
 
-![](../../images/02-03-03.png)
+- **Features**:
+  - **Container Runtime**: `containerd` is responsible for executing containers, managing their lifecycle (start, stop, pause, delete), and handling container images.
+  - **API Interface**: Provides a standardized API for higher-level container platforms to interact with.
+  - **Modularity**: Designed to be extensible and modular, allowing it to be embedded into various container platforms.
 
-So `rkt` and other container runtimes that adhere to the OCI standards were now supported as container runtimes for Kubernetes via the CRI, however Docker wasn’t built to support  the CRI standards, remember Docker was built way before CRI was introduced and Docker still was the dominant container tool used by most, so Kubernetes had to continue to support Docker as well and so Kubernetes introduced what is known as `dockershim` which was a hacky but temporary way to support Docker outside of the CRI.
+- **Use Case**:
+  - `containerd` is used as the core runtime engine by higher-level container platforms.
+  - It is commonly integrated into container orchestration systems like Kubernetes, Docker, and others.
+  - Developers or organizations building their container platforms might use `containerd` as the runtime engine.
+
+### Comparison:
+
+- **Scope**:
+  - Docker is a comprehensive platform for containerization, including tools for building, managing, and running containers.
+  - `containerd` is a runtime that focuses on the core functions of executing and managing containers, meant to be embedded into higher-level systems.
+
+- **Use Cases**:
+  - Use Docker for end-to-end container development, from building images to running and managing containers.
+  - Use `containerd` as the core runtime engine within larger container platforms or orchestration systems.
+
+- **Integration**:
+  - Docker incorporates `containerd` as its core runtime.
+  - Kubernetes, for example, uses `containerd` as the default runtime for managing containers.
+
+- **Customization**:
+  - Docker provides a user-friendly interface and tools for container management.
+  - `containerd` is more focused on providing a standardized runtime interface and is typically used by developers building container platforms.
+
+### Summary:
+- Docker is a comprehensive platform for containerization, providing tools for building, running, and managing containers.
+- `containerd` is an industry-standard core container runtime, focused on managing the lifecycle and execution of containers, designed to be embedded into larger container platforms.
+
+In many cases, if you are using Docker, you are also using `containerd` under the hood as Docker Engine incorporates `containerd` as its core runtime. However, `containerd` can also be used independently in custom container orchestration solutions or when building container platforms.
 
 ![](../../images/02-03-04.png)
 
