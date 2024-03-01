@@ -17,6 +17,8 @@ In this section, we will take a look at ETCD role in kubernetes
   ![etcd](../../images/etcd.PNG)
   
 AsChat GPT
+
+
 To install etcd as a service on a Linux node, you typically follow these steps. Since you haven't mentioned the specific Linux distribution, I'll provide a general guide that should work for most distributions, especially those using systemd for managing services. If your system uses a different init system (like SysVinit), the steps might vary slightly.
 
 ### 1. Download etcd
