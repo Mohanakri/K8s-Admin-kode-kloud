@@ -16,6 +16,91 @@ In this section, we will take a look at ETCD role in kubernetes
 
   ![etcd](../../images/etcd.PNG)
   
+AsChat GPT
+To install etcd as a service on a Linux node, you typically follow these steps. Since you haven't mentioned the specific Linux distribution, I'll provide a general guide that should work for most distributions, especially those using systemd for managing services. If your system uses a different init system (like SysVinit), the steps might vary slightly.
+
+### 1. Download etcd
+First, you'll need to download the etcd binary. You can find the latest release on the [etcd GitHub releases page](https://github.com/etcd-io/etcd/releases).
+
+For example, to download version 3.5.0:
+
+```bash
+wget https://github.com/etcd-io/etcd/releases/download/v3.5.0/etcd-v3.5.0-linux-amd64.tar.gz
+tar xvf etcd-v3.5.0-linux-amd64.tar.gz
+cd etcd-v3.5.0-linux-amd64
+```
+
+### 2. Move the etcd binaries
+Move the etcd binaries to a location like `/usr/local/bin/` so they are in the system's path:
+
+```bash
+sudo mv etcd etcdctl /usr/local/bin/
+```
+
+### 3. Create etcd User (Optional)
+It's a good practice to create a dedicated user for running etcd. You can skip this step if you prefer to run etcd as a different user.
+
+```bash
+sudo useradd -r -s /bin/false etcd
+```
+
+### 4. Create etcd Configuration File
+Create a configuration file for etcd. This is an example `/etc/etcd/etcd.conf.yml`:
+
+```yaml
+name: node1
+data-dir: /var/lib/etcd
+initial-cluster-state: new
+initial-cluster-token: my-etcd-cluster
+initial-cluster: node1=http://<node1_ip>:2380,node2=http://<node2_ip>:2380,node3=http://<node3_ip>:2380
+initial-advertise-peer-urls: http://<node1_ip>:2380
+advertise-client-urls: http://<node1_ip>:2379
+listen-peer-urls: http://<node1_ip>:2380
+listen-client-urls: http://<node1_ip>:2379
+```
+
+Replace `<node1_ip>`, `<node2_ip>`, `<node3_ip>` with the respective IP addresses of your nodes if you're setting up a cluster. If you're setting up a single-node etcd, you can simplify this.
+
+### 5. Create Systemd Service File
+Create a systemd service file for etcd at `/etc/systemd/system/etcd.service`:
+
+```ini
+[Unit]
+Description=etcd
+Documentation=https://github.com/etcd-io/etcd
+After=network.target
+
+[Service]
+User=etcd
+Type=notify
+ExecStart=/usr/local/bin/etcd --config-file /etc/etcd/etcd.conf.yml
+Restart=always
+RestartSec=10s
+LimitNOFILE=40000
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### 6. Reload systemd and Start etcd Service
+Reload systemd to read the new service file and start the etcd service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable etcd
+sudo systemctl start etcd
+```
+
+### 7. Verify etcd Status
+Check the status to ensure that etcd is running properly:
+
+```bash
+sudo systemctl status etcd
+```
+
+That's it! Etcd should now be installed as a service on your node, running in the background.
+
+
 ## Setup - Kubeadm
 - If you setup your cluster using **`kubeadm`** then kubeadm will deploy etcd server for you as a pod in **`kube-system`** namespace.
   ```
