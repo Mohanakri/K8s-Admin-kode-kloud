@@ -11,6 +11,10 @@ In this section, we will take a look at kube-scheduler.
 #### Why do you need a Scheduler?
 
   ![kube-scheduler2](../../images/kube-scheduler2.PNG)
+
+In summary, the Kubernetes scheduler plays a crucial role in orchestrating the placement of pods onto nodes in a cluster. It ensures efficient resource utilization, high availability, scalability, and adherence to custom placement policies, ultimately enabling the cluster to run applications effectively and reliably.
+
+https://kubernetes.io/docs/concepts/scheduling-eviction/
     
 ## Install kube-scheduler - Manual
 - Download the kubescheduler binary from the kubernetes release pages [kube-scheduler](https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kube-scheduler). For example: To download kube-scheduler v1.13.0, Run the below command.
