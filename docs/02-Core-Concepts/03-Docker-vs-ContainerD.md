@@ -65,7 +65,7 @@ In this section we will look at the differences between Docker and ContainerD
 - `containerd` is an industry-standard core container runtime, focused on managing the lifecycle and execution of containers, designed to be embedded into larger container platforms.
 
   The terms "container" and "Docker" are often used together in discussions about containerization, but they refer to different things:
-
+##Container vs Contauiner:
 ### Container:
 
 - **Definition**: A container is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings.
