@@ -64,9 +64,68 @@ In this section we will look at the differences between Docker and ContainerD
 - Docker is a comprehensive platform for containerization, providing tools for building, running, and managing containers.
 - `containerd` is an industry-standard core container runtime, focused on managing the lifecycle and execution of containers, designed to be embedded into larger container platforms.
 
-In many cases, if you are using Docker, you are also using `containerd` under the hood as Docker Engine incorporates `containerd` as its core runtime. However, `containerd` can also be used independently in custom container orchestration solutions or when building container platforms.
+  The terms "container" and "Docker" are often used together in discussions about containerization, but they refer to different things:
 
-![](../../images/02-03-04.png)
+### Container:
+
+- **Definition**: A container is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings.
+  
+- **Isolation**:
+  - Containers provide process and file system isolation, allowing applications to run in their own isolated environments.
+  - They share the host OS kernel but have their own user space.
+
+- **Advantages**:
+  - **Portability**: Containers can run consistently on any environment that supports the containerization platform.
+  - **Efficiency**: They use less resources compared to traditional virtual machines.
+  - **Consistency**: Containers ensure that an application runs the same way in development, testing, and production environments.
+
+- **Use Cases**:
+  - Packaging and deploying applications with their dependencies in a consistent and reproducible manner.
+  - Microservices architecture, where different components of an application are run in separate containers.
+  - Continuous Integration and Continuous Deployment (CI/CD) pipelines.
+
+### Docker:
+
+- **Definition**: Docker is a popular platform and toolset for developing, shipping, and running applications in containers.
+  
+- **Components**:
+  - **Docker Engine**: The core tool that allows you to build, run, and manage containers.
+  - **Docker CLI**: Command-line interface for interacting with Docker Engine.
+  - **Docker Compose**: Tool for defining and running multi-container Docker applications.
+  - **Docker Hub**: Public registry for storing and sharing Docker images.
+
+- **Features**:
+  - **Image Management**: Building, storing, and sharing container images using Dockerfile and Docker Hub.
+  - **Container Management**: Running, starting, stopping, and managing containers.
+  - **Networking**: Docker provides networking features to connect containers.
+  - **Volumes**: Managing persistent data using volumes.
+  - **Orchestration**: Docker Swarm for container orchestration (or Kubernetes can be used with Docker containers).
+
+- **Use Cases**:
+  - Local development environments where developers can work with applications in containers on their laptops.
+  - Building and packaging applications into Docker images for deployment.
+  - Running applications in production environments using container orchestration tools.
+
+### Comparison:
+
+- **Container**:
+  - Refers to the fundamental technology that allows applications to be packaged and run in isolated environments.
+  - It is a generic term that applies to various containerization technologies like Docker, Podman, containerd, etc.
+
+- **Docker**:
+  - Refers specifically to the Docker platform, including Docker Engine, Docker CLI, Docker Compose, and Docker Hub.
+  - Provides a comprehensive set of tools and services for working with containers.
+
+### Relationship:
+
+- Docker uses containers as its core technology to package, distribute, and run applications.
+- When people refer to "Docker containers," they are often talking about containers managed and created using Docker tools.
+
+### Summary:
+- **Container** is the technology that allows applications to be packaged and run in isolated environments.
+- **Docker** is a platform and toolset built around containers, providing a comprehensive solution for developing, shipping, and running applications in containers.
+
+When discussing containers in the context of Docker, the terms are often used interchangeably. However, it's important to understand that containers are a broader concept, while Docker is a specific implementation and toolset for working with containers. Other containerization technologies exist, but Docker remains one of the most popular and widely used.
 
 So while most other container runtimes worked to the CRI, Docker continued to work without it, so now you see Docker isn’t just a container runtime alone. Docker consists of multiple tools that are put together, for example the Docker CLI, the Docker API, the build tools that help in building images. There was support for volumes, security, and finally the container runtime called `runc`, and the daemon that managed `runc`, that was called `containerd`. So containerd is CRI compatible and can work directly with Kubernetes as all other runtimes, so containerd can be used as a runtime on its own separate from Docker.
 
