@@ -1,17 +1,6 @@
 # ETCD for Beginners
   - Take me to the [Video Tutorial](https://kodekloud.com/topic/etcd-for-beginners/)
 
-  In this section, we will take a quick look at introduction to ETCD for beginners.
-  - What is ETCD?
-  - What is a Key-Value Store?
-  - How to get started quickly with ETCD?
-  - How to operate ETCD?
-
- ## What is a ETCD?
-     - ETCD is a distributed reliable key-value store that is simple, secure & Fast.
-
-
-
 The article provides a beginner-friendly introduction to ETCD, a distributed key-value store often used in Kubernetes. Here's a summary of the main points:
 
 - **Introduction to ETCD:**
@@ -56,6 +45,16 @@ The article provides a beginner-friendly introduction to ETCD, a distributed key
 The article serves as a foundational guide for beginners to understand ETCD, its usage, and the basics of interacting with it using the `etcdctl` command-line tool.
 
 
+
+
+  In this section, we will take a quick look at introduction to ETCD for beginners.
+  - What is ETCD?
+  - What is a Key-Value Store?
+  - How to get started quickly with ETCD?
+  - How to operate ETCD?
+
+ ## What is a ETCD?
+     - ETCD is a distributed reliable key-value store that is simple, secure & Fast.
 
 
 ## What is a Key-Value Store
