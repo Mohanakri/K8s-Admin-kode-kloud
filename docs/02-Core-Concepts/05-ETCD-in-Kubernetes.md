@@ -16,91 +16,37 @@ In this section, we will take a look at ETCD role in kubernetes
 
   ![etcd](../../images/etcd.PNG)
   
-AsChat GPT
 
+This article focuses on explaining the role of **etcd** within **Kubernetes** and how it stores crucial information about the cluster. Here's a summary of the main points covered:
 
-To install etcd as a service on a Linux node, you typically follow these steps. Since you haven't mentioned the specific Linux distribution, I'll provide a general guide that should work for most distributions, especially those using systemd for managing services. If your system uses a different init system (like SysVinit), the steps might vary slightly.
+- **Role of etcd in Kubernetes**:
+  - **etcd** serves as the data store for various elements in the Kubernetes cluster, including nodes, pods, configurations, secrets, accounts, roles, and role bindings.
+  - When you execute **kubectl get** commands, the information displayed is retrieved from the **etcd** server.
+  - Any changes made to the cluster, such as adding nodes or deploying pods/replica sets, are updated within the **etcd** server. A change is considered complete only after reflecting in **etcd**.
 
-### 1. Download etcd
-First, you'll need to download the etcd binary. You can find the latest release on the [etcd GitHub releases page](https://github.com/etcd-io/etcd/releases).
+- **Deployment Methods**:
+  - Depending on the cluster setup, **etcd** can be deployed differently.
+  - Two primary deployment methods are discussed:
+    - **Deploying from Scratch**: Download **etcd** binaries, install them, and configure **etcd** as a service in the master node manually.
+    - **Using kubeadm**: If **kubeadm** is used to set up the cluster, it automatically deploys **etcd** as a pod in the **kube-system** namespace.
 
-For example, to download version 3.5.0:
+- **Configuration Options for etcd**:
+  - When setting up **etcd** as a service, various options, especially related to certificates, need to be configured.
+  - Details about configuring **etcd** as a cluster are discussed, with a focus on options for high availability setups in Kubernetes.
+  - An essential option highlighted is the **advertised client URL**, which is the address at which **etcd** listens (defaulted to IP of the server and port 2379).
 
-```bash
-wget https://github.com/etcd-io/etcd/releases/download/v3.5.0/etcd-v3.5.0-linux-amd64.tar.gz
-tar xvf etcd-v3.5.0-linux-amd64.tar.gz
-cd etcd-v3.5.0-linux-amd64
-```
+- **Exploring the etcd Database**:
+  - The **etcdctl** utility within the **etcd** pod allows exploration of the **etcd** database.
+  - To list all keys stored by Kubernetes, the command **etcdctl get** is used.
+  - Kubernetes structures its data in a specific directory format, with the root directory as the **registry** containing various constructs like nodes, pods, replica sets, and deployments.
 
-### 2. Move the etcd binaries
-Move the etcd binaries to a location like `/usr/local/bin/` so they are in the system's path:
+- **High Availability Setup**:
+  - In a high availability environment, there are multiple master nodes and **etcd** instances distributed across these nodes.
+  - Proper configuration is crucial to ensure that **etcd** instances recognize each other, achieved by setting the right parameters in the **etcd** service configuration.
+  - The **initial cluster** option is used to specify different instances of the **etcd** service in a high availability setup.
 
-```bash
-sudo mv etcd etcdctl /usr/local/bin/
-```
+The article concludes by mentioning that high availability setups will be discussed in more detail later in the course. It provides a comprehensive overview of **etcd**'s role, deployment methods, configuration options, and the importance of understanding these aspects in managing a Kubernetes cluster.
 
-### 3. Create etcd User (Optional)
-It's a good practice to create a dedicated user for running etcd. You can skip this step if you prefer to run etcd as a different user.
-
-```bash
-sudo useradd -r -s /bin/false etcd
-```
-
-### 4. Create etcd Configuration File
-Create a configuration file for etcd. This is an example `/etc/etcd/etcd.conf.yml`:
-
-```yaml
-name: node1
-data-dir: /var/lib/etcd
-initial-cluster-state: new
-initial-cluster-token: my-etcd-cluster
-initial-cluster: node1=http://<node1_ip>:2380,node2=http://<node2_ip>:2380,node3=http://<node3_ip>:2380
-initial-advertise-peer-urls: http://<node1_ip>:2380
-advertise-client-urls: http://<node1_ip>:2379
-listen-peer-urls: http://<node1_ip>:2380
-listen-client-urls: http://<node1_ip>:2379
-```
-
-Replace `<node1_ip>`, `<node2_ip>`, `<node3_ip>` with the respective IP addresses of your nodes if you're setting up a cluster. If you're setting up a single-node etcd, you can simplify this.
-
-### 5. Create Systemd Service File
-Create a systemd service file for etcd at `/etc/systemd/system/etcd.service`:
-
-```ini
-[Unit]
-Description=etcd
-Documentation=https://github.com/etcd-io/etcd
-After=network.target
-
-[Service]
-User=etcd
-Type=notify
-ExecStart=/usr/local/bin/etcd --config-file /etc/etcd/etcd.conf.yml
-Restart=always
-RestartSec=10s
-LimitNOFILE=40000
-
-[Install]
-WantedBy=multi-user.target
-```
-
-### 6. Reload systemd and Start etcd Service
-Reload systemd to read the new service file and start the etcd service:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable etcd
-sudo systemctl start etcd
-```
-
-### 7. Verify etcd Status
-Check the status to ensure that etcd is running properly:
-
-```bash
-sudo systemctl status etcd
-```
-
-That's it! Etcd should now be installed as a service on your node, running in the background.
 
 
 ## Setup - Kubeadm
