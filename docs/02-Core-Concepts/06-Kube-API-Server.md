@@ -1,7 +1,7 @@
 # Kube API Server
   - Take me to [Video Tutorial](https://kodekloud.com/topic/kube-api-server/)
   
-In this section, we will talk about kube-apiserver in kubernetes
+
 
 Here is a summary of the article on the **kube-apiserver** in Kubernetes:
 
@@ -34,6 +34,7 @@ The article concludes by emphasizing the importance of understanding these compo
 
 
 
+In this section, we will talk about kube-apiserver in kubernetes
 
 
 #### Kube-apiserver is the primary component in kubernetes.
