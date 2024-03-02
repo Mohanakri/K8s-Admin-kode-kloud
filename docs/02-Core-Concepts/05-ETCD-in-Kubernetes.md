@@ -1,21 +1,6 @@
 # ETCD in Kubernetes
   - Take me to [Video Tutorial](https://kodekloud.com/topic/etcd-in-kubernetes/)
 
-In this section, we will take a look at ETCD role in kubernetes
-
-## ETCD Datastore
-- The ETCD Datastore stores information regarding the cluster such as **`Nodes`**, **`PODS`**, **`Configs`**, **`Secrets`**, **`Accounts`**, **`Roles`**, **`Bindings`** and **`Others`**.
-- Every information you see when you run the **`kubectl get`** command is from the **`ETCD Server`**.
-
-## Setup - Manual
-- If you setup your cluster from scratch then you deploy **`ETCD`** by downloading ETCD Binaries yourself
-- Installing Binaries and Configuring ETCD as a service in your master node yourself.
-  ```
-  $ wget -q --https-only "https://github.com/etcd-io/etcd/releases/download/v3.3.11/etcd-v3.3.11-linux-amd64.tar.gz"
-  ```
-
-  ![etcd](../../images/etcd.PNG)
-  
 
 This article focuses on explaining the role of **etcd** within **Kubernetes** and how it stores crucial information about the cluster. Here's a summary of the main points covered:
 
@@ -48,6 +33,24 @@ This article focuses on explaining the role of **etcd** within **Kubernetes** an
 The article concludes by mentioning that high availability setups will be discussed in more detail later in the course. It provides a comprehensive overview of **etcd**'s role, deployment methods, configuration options, and the importance of understanding these aspects in managing a Kubernetes cluster.
 
 
+
+
+
+In this section, we will take a look at ETCD role in kubernetes
+
+## ETCD Datastore
+- The ETCD Datastore stores information regarding the cluster such as **`Nodes`**, **`PODS`**, **`Configs`**, **`Secrets`**, **`Accounts`**, **`Roles`**, **`Bindings`** and **`Others`**.
+- Every information you see when you run the **`kubectl get`** command is from the **`ETCD Server`**.
+
+## Setup - Manual
+- If you setup your cluster from scratch then you deploy **`ETCD`** by downloading ETCD Binaries yourself
+- Installing Binaries and Configuring ETCD as a service in your master node yourself.
+  ```
+  $ wget -q --https-only "https://github.com/etcd-io/etcd/releases/download/v3.3.11/etcd-v3.3.11-linux-amd64.tar.gz"
+  ```
+
+  ![etcd](../../images/etcd.PNG)
+  
 
 ## Setup - Kubeadm
 - If you setup your cluster using **`kubeadm`** then kubeadm will deploy etcd server for you as a pod in **`kube-system`** namespace.
