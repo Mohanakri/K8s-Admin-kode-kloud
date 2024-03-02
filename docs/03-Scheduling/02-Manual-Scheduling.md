@@ -37,7 +37,7 @@ In summary, the lecture explains the process of manually scheduling pods on node
 
 
 
-  
+-----------------------------------------------------------------  
 In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on a node.
 
 ## How Scheduling Works
