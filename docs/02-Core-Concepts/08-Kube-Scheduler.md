@@ -14,23 +14,36 @@ In this section, we will take a look at kube-scheduler.
 
 As Per ChatGpt  
 
-In Kubernetes, a scheduler is essential for efficiently managing the deployment of containers across the cluster's nodes. Here are several reasons why a scheduler is necessary:
 
-1. **Resource Optimization**: Kubernetes scheduler ensures that each pod (a group of one or more containers) is placed on a node with adequate resources (CPU, memory, etc.) to run effectively. It considers the resource requests and limits specified in the pod's configuration to make informed decisions about placement.
+Here's a summary of the text regarding kube-scheduler:
 
-2. **High Availability**: The scheduler plays a crucial role in ensuring high availability by spreading pods across different nodes. By distributing workloads, it mitigates the risk of a single point of failure and enhances the overall resilience of the system.
+- **Role of Kube-Scheduler:**
+  - Responsible for scheduling pods on nodes in Kubernetes.
+  - Determines which pod goes on which node but does not physically place them.
+  - Kubelet, the "captain on the ship," actually creates pods on nodes.
 
-3. **Load Balancing**: Kubernetes scheduler helps in load balancing by evenly distributing the workload across nodes. This prevents overloading certain nodes while others remain underutilized, thus optimizing resource utilization and improving system performance.
+- **Scheduler's Decision-making Process:**
+  - Ensures the right container ends up on the right ship (node).
+  - Considers factors like node capacity, pod resource requirements, and destination.
+  - Filters out nodes that don't fit the pod's resource profile.
+  - Ranks remaining nodes using a priority function to find the best fit.
+  - Example: The node with more free resources after placing the pod gets a higher rank.
 
-4. **Affinity and Anti-affinity**: Kubernetes allows administrators to define affinity and anti-affinity rules to influence pod placement. The scheduler evaluates these rules and schedules pods based on node labels, pod labels, or other attributes specified in the rules. This capability helps in achieving specific deployment requirements, such as co-locating related services or separating critical workloads.
+- **Customization and Additional Topics:**
+  - Scheduler functionality can be customized.
+  - Topics include resource requirements, limits, taints and tolerations, node selectors, affinity rules, etc.
+  - These topics will be discussed in detail in an upcoming section.
 
-5. **Constraints and Policies**: The scheduler supports various constraints and policies that administrators can define to control pod placement. These constraints may include node selectors, node taints and tolerations, pod affinity/anti-affinity, resource quotas, and custom scheduling policies. The scheduler ensures compliance with these constraints while making scheduling decisions.
+- **Installation of Kube-Scheduler:**
+  - Download the kube-scheduler binary from the Kubernetes release page.
+  - Extract it and run it as a service, specifying the scheduler configuration file.
 
-6. **Dynamic Scheduling**: Kubernetes scheduler continuously monitors the cluster's state and adjusts pod placement as nodes are added, removed, or become unavailable. This dynamic scheduling capability ensures that the cluster remains responsive to changes in workload demand and cluster topology.
+- **Viewing Kube-Scheduler Options:**
+  - For clusters set up with `kubeadm` tool, kube-scheduler is deployed as a pod in the `kube-system` namespace on the master node.
+  - View options within the pod definition file located at `/etc/kubernetes/manifest/folder`.
+  - See running process and effective options by listing the process on the master node and searching for `kube-scheduler`.
 
-7. **Integration with Other Kubernetes Components**: The scheduler integrates with other Kubernetes components such as the kube-controller-manager, kubelet, and API server to coordinate pod scheduling and lifecycle management. It collaborates with these components to ensure consistent and reliable operation of the cluster.
-
-Overall, the scheduler is a critical component of Kubernetes that automates the placement of pods onto cluster nodes, optimizing resource utilization, ensuring high availability, and adhering to deployment constraints and policies defined by administrators.
+The summary covers the kube-scheduler's role, decision-making process, customization options, installation steps, and how to view its options in an existing cluster setup.
 
 
 https://kubernetes.io/docs/concepts/scheduling-eviction/
