@@ -36,6 +36,42 @@ Here's a summary of the article on Kubernetes Service Cluster IP:
 This approach simplifies the communication between different tiers of the application and provides a stable, scalable method for pods to interact within a Kubernetes cluster.
 
 
+------------------
+
+Here's a summary of the article on the Load Balancer type of service in Kubernetes:
+
+- **Objective**: The lecture introduces the Load Balancer type of service in Kubernetes, which helps in making front-end applications accessible to external users through a single URL.
+
+- **NodePort Service Recap**: Previously, the NodePort service was discussed, which allows making an external-facing application available on a port on the worker nodes.
+
+- **Challenge**: The focus now shifts to front-end applications, like the voting app and result app, hosted on worker nodes in a cluster. While NodePort services can make these accessible, it requires users to use different IP addresses and port combinations for each node.
+
+- **Desired Solution**: End users typically prefer a single URL (like votingapp.com or resultapp.com) to access the application, rather than multiple IP addresses and ports.
+
+- **Manual Load Balancer Approach**:
+  - One way to achieve this is by creating a new virtual machine (VM) for load balancer purposes.
+  - Install and configure a suitable load balancer such as HAProxy or nginx on this VM.
+  - Configure the load balancer to route traffic to the underlying nodes.
+  - However, setting up and managing this external load balancer can be cumbersome.
+
+- **Cloud Platform Integration**:
+  - Kubernetes supports integration with native load balancers provided by certain cloud platforms like Google Cloud Platform (GCP), AWS, and Azure.
+  - Leveraging the native load balancer of the cloud platform simplifies the process and configuration.
+  - Set the type of service for front-end services to LoadBalancer instead of NodePort.
+  - This works seamlessly on supported cloud platforms like GCP, AWS, and Azure, automatically configuring the load balancing for the service.
+  - Note that setting the service type to LoadBalancer in an unsupported environment (like VirtualBox) would behave the same as NodePort, without external load balancing.
+
+- **Implementation in Cloud Platforms**:
+  - In demos of deploying applications on cloud platforms (GCP, AWS, Azure), the LoadBalancer type will be demonstrated, showing the automatic configuration of load balancing.
+
+- **Conclusion**:
+  - Using the LoadBalancer service type in Kubernetes simplifies the process of making front-end applications accessible through a single URL.
+  - Supported cloud platforms like GCP, AWS, and Azure integrate seamlessly with Kubernetes to provide native load balancing capabilities for services.
+
+This approach provides end users with a single, user-friendly URL to access front-end applications, enhancing accessibility and usability while leveraging the native load balancing features of supported cloud platforms.
+
+
+
 
   
 In this section we will take a look at **`services - ClusterIP`** in kubernetes
