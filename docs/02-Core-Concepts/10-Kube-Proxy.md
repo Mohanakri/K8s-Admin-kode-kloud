@@ -1,6 +1,27 @@
 # Kube Proxy
 - Take me to [Video Tutorial](https://kodekloud.com/topic/kube-proxy/)
 
+
+
+Here is a summary of the article on **kube-proxy** in Kubernetes:
+
+- **kube-proxy** is discussed in the context of enabling communication between pods in a Kubernetes cluster.
+- In a Kubernetes cluster, every pod should be able to reach every other pod, achieved by deploying a pod networking solution.
+- A **pod network** is an internal virtual network spanning across all nodes in the cluster, allowing pods to communicate.
+- To ensure consistent access, services are used. Services provide a stable endpoint for pods to access other pods using the service name.
+- **kube-proxy** is responsible for managing services in Kubernetes.
+- It runs on each node and creates rules to forward traffic to services.
+- When a new service is created, **kube-proxy** creates appropriate rules on each node to forward traffic to the backend pods.
+- This forwarding is typically done using **iptables** rules.
+- **kube-proxy** is a crucial component for enabling communication between pods and services in the cluster.
+- For installation, download the **kube-proxy** binary, extract it, and run it as a service.
+- If using the **kubeadm** tool, **kube-proxy** is deployed as pods on each node using a **DaemonSet**.
+
+Understanding **kube-proxy** is essential for managing communication and services within a Kubernetes cluster, ensuring that pods can access necessary resources reliably.
+
+
+
+
 In this section, we will take a look at kube-proxy.
 
 Within Kubernetes Cluster, every pod can reach every other pod, this is accomplish by deploying a pod networking cluster to the cluster. 
