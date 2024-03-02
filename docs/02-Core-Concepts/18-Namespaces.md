@@ -1,6 +1,53 @@
 # Namespaces
   - Take me to [Video Tutorial](https://kodekloud.com/topic/namespaces/)
-  
+
+
+
+Here's a summary of the article on Kubernetes Namespaces:
+
+- **Namespaces in Kubernetes** can be likened to houses, each with its own set of rules and resources.
+- **Default Namespace**:
+  - The default namespace is automatically created by Kubernetes.
+  - It contains pods and services for internal purposes like networking and DNS.
+- **Kube-system Namespace**:
+  - Houses internal Kubernetes system services.
+  - Keeps system resources separate from user resources.
+- **Kube-public Namespace**:
+  - Contains resources made available to all users.
+- **Purpose of Namespaces**:
+  - Isolate resources.
+  - Prevent accidental modifications across different environments.
+  - Apply specific policies and resource quotas.
+- **Usage**:
+  - In small environments, default namespace suffices.
+  - For larger setups, create custom namespaces.
+- **Resource Referencing**:
+  - Resources within a namespace can refer to each other by name.
+  - To reach services in other namespaces, use `servicename.namespace.svc.cluster.local` format.
+- **Operational Aspects**:
+  - Use `kubectl` commands to work with namespaces.
+  - Use `-n` option to specify a namespace in commands.
+  - To permanently set a namespace, use `kubectl config set-context` command.
+- **Creating Namespaces**:
+  - Use a namespace definition file with `apiVersion: v1`, `kind: Namespace`, and `metadata` specifying the name.
+  - Run `kubectl create -f namespace-definition.yaml` to create the namespace.
+  - Alternatively, use `kubectl create namespace dev` to create a namespace directly.
+- **Switching Namespaces**:
+  - Use `kubectl config set-context` to switch to a different namespace.
+  - This allows for easier management of resources in different environments.
+- **Viewing Pods**:
+  - Use `kubectl get pods` to view pods in the current namespace.
+  - Use `-n` option to specify a namespace to view pods in that namespace.
+  - Use `--all-namespaces` to view pods across all namespaces.
+- **Resource Quotas**:
+  - Create resource quotas to limit resource usage in namespaces.
+  - Define limits such as number of pods, CPU units, memory, etc. in a quota definition file.
+
+Understanding and working with Kubernetes Namespaces allows for better organization, resource management, and isolation of resources within a Kubernetes cluster.
+
+
+
+ 
 In this section, we will take a look at **`Namespaces`**
 
 So far in this course we have created **`Objects`** such as **`PODs`**, **`Deployments`** and **`Services`** in our cluster. Whatever we have been doing we have been doing in a **`NAMESPACE`**.
