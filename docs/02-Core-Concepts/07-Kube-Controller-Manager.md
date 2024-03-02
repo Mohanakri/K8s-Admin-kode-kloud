@@ -2,7 +2,6 @@
 
   - Take me to [Video Tutorial](https://kodekloud.com/topic/kube-controller-manager/)
   
-In this section, we will take a look at kube-controller-manager.
 
 
 Here is a summary of the article on the **Kube Controller Manager** in Kubernetes:
@@ -29,6 +28,7 @@ Understanding these controllers and their configurations is crucial for managing
 
 
 
+In this section, we will take a look at kube-controller-manager.
 
 
 #### Kube Controller Manager manages various controllers in kubernetes.
