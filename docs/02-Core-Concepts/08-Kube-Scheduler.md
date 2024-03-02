@@ -1,19 +1,6 @@
 # Kube Scheduler
   - Take me to [Video Tutorial](https://kodekloud.com/topic/kube-scheduler/)
 
-In this section, we will take a look at kube-scheduler.
-
-#### kube-scheduler is responsible for scheduling pods on nodes.  
-- The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, that's the job of the **`kubelet`**.
-
-  ![kube-scheduler1](../../images/kube-scheduler1.PNG)
-  
-#### Why do you need a Scheduler?
-
-  ![kube-scheduler2](../../images/kube-scheduler2.PNG)
-
-As Per ChatGpt  
-
 
 Here's a summary of the text regarding kube-scheduler:
 
@@ -44,6 +31,20 @@ Here's a summary of the text regarding kube-scheduler:
   - See running process and effective options by listing the process on the master node and searching for `kube-scheduler`.
 
 The summary covers the kube-scheduler's role, decision-making process, customization options, installation steps, and how to view its options in an existing cluster setup.
+
+
+
+In this section, we will take a look at kube-scheduler.
+
+#### kube-scheduler is responsible for scheduling pods on nodes.  
+- The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, that's the job of the **`kubelet`**.
+
+  ![kube-scheduler1](../../images/kube-scheduler1.PNG)
+  
+#### Why do you need a Scheduler?
+
+  ![kube-scheduler2](../../images/kube-scheduler2.PNG)
+
 
 
 https://kubernetes.io/docs/concepts/scheduling-eviction/
