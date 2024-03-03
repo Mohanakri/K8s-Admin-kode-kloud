@@ -9,10 +9,7 @@ In this section , we will take a look at the kubernetes Architecture at high lev
   
   ![Kubernetes Architecture 1](../../images/k8s-arch1.PNG)
 
-https://www.simform.com/blog/kubernetes-architecture/
-
-
-[Kubernetes Architecture and Components with Diagram.pdf](https://github.com/Mohanakri/K8s-Admin-kode-kloud/files/14468959/Kubernetes.Architecture.and.Components.with.Diagram.pdf)
+https://devopscube.com/kubernetes-architecture-explained/
 
 
 
