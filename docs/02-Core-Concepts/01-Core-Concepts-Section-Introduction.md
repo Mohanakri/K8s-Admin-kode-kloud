@@ -1,11 +1,8 @@
 # Core Concepts Section Introduction
 
  - Take me to the [Video Tutorial](https://kodekloud.com/topic/core-concepts-section-introduction/)
- 
-In this section, we will take a look at the below
-- Cluster Architecture  
-- API Primitives
-- Services & Other Network Primitives
+
+Kernal in linux meaning :responsible for managing hardware resources, processes, memory, file systems, devices, networking, and security. It provides a stable and efficient foundation for user-space applications to run and interact with the underlying hardware. The kernel's role is crucial in ensuring the proper functioning, performance, and security of the Linux operating system.
 
 
 Hypervisors and container runtimes are both technologies used for virtualization and isolation but operate at different levels and have distinct characteristics:
