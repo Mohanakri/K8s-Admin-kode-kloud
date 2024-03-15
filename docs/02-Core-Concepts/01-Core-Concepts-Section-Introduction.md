@@ -12,15 +12,23 @@ In summary, while both hypervisors and container runtimes provide virtualization
 
 _______________________________
 Comparison:
+
+
 kubectl create:
+
 Use when you want to create a resource and ensure it does not already exist.
 Best for one-time resource creation from manifest files.
 Returns an error if the resource already exists.
+
+
 kubectl apply:
+
 Use when you want to create or update a resource based on the manifest file.
 Best for managing resources in a declarative way, allowing for easier updates.
 Creates the resource if it does not exist, updates it if it does.
+
 kubectl run:
+
 Use for quick, imperative Pod or Deployment creation.
 Best for one-time actions, testing, or development.
 Creates Pods or Deployments directly without using a manifest file.
