@@ -51,6 +51,9 @@ Here's a summary of the article:
 The lecture explains the significance of commands and arguments in Docker containers, how to override default commands, and the difference between `CMD` and `ENTRYPOINT` instructions. It also covers how to combine these instructions and modify the behavior of containers at runtime. Understanding these concepts is essential for managing and defining container behavior effectively in Kubernetes.
 
 _____________________________________________________________________________________________________________________________-
+
+
+
 In this section, we will take a look at commands and arguments in docker
 
 - To run a docker container
