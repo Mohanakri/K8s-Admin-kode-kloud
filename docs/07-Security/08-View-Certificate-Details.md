@@ -41,6 +41,10 @@
 This lecture provides a comprehensive guide to performing a health check on Kubernetes cluster certificates, ensuring that all certificates are valid and properly configured.
 
 ================================================================================================================================
+
+
+
+
 In this section, we will take a look how to view certificates in a kubernetes cluster.
 
 ## View Certs 
