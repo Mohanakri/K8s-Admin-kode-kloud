@@ -1,6 +1,49 @@
 # Cluster Roles
   - Take me to [Video Tutorial](https://kodekloud.com/topic/cluster-roles/)
-  
+In this lecture, the focus shifts to cluster roles and cluster role bindings in Kubernetes, which handle authorization for cluster-wide resources. Here's a summary of the key points covered:
+
+### Namespaced vs. Cluster-Scoped Resources
+- Kubernetes resources can be categorized as namespaced or cluster-scoped.
+- Namespaced resources are created within a specific namespace, while cluster-scoped resources are not associated with any particular namespace.
+
+### Introduction to Cluster Roles and Cluster Role Bindings
+- Cluster roles and cluster role bindings are used for authorizing users to access cluster-wide resources like nodes and persistent volumes.
+- Unlike roles and role bindings, which are namespaced, cluster roles and cluster role bindings are not limited to a specific namespace.
+
+### Creating Cluster Roles
+1. **Create Cluster Role Definition File**:
+   - Define a cluster role object with the kind set to `ClusterRole`.
+   - Specify the rules for the cluster role, including the resources and permissions.
+   - Example: Creating a cluster role for a cluster administrator to manage nodes.
+
+2. **Create Cluster Role**:
+   - Use the `kubectl create clusterrole` command to create the cluster role based on the definition file.
+
+### Creating Cluster Role Bindings
+1. **Create Cluster Role Binding Definition File**:
+   - Define a cluster role binding object with the kind set to `ClusterRoleBinding`.
+   - Specify the user details in the `subjects` section.
+   - Reference the cluster role created earlier in the `roleRef` section.
+
+2. **Create Cluster Role Binding**:
+   - Use the `kubectl create clusterrolebinding` command to create the cluster role binding based on the definition file.
+
+### Flexibility of Cluster Roles
+- While cluster roles are typically used for cluster-scoped resources, they can also be applied to namespaced resources, granting access across all namespaces.
+
+### Default Cluster Roles
+- Kubernetes automatically creates several default cluster roles during cluster setup, which will be explored further in practice tests.
+
+### Conclusion
+- Cluster roles and cluster role bindings provide a mechanism for authorizing users to manage cluster-wide resources in Kubernetes.
+- They are essential for granting permissions to perform administrative tasks at the cluster level.
+- Understanding the distinction between namespaced and cluster-scoped resources is crucial for effective access control in Kubernetes environments.
+
+  ========================================================================================================
+
+
+
+    
 In this section, we will take a look at cluster roles
 
 ## Roles
