@@ -1,5 +1,54 @@
 # RBAC
   - Take me to [Video Tutorial](https://kodekloud.com/topic/role-based-access-controls/)
+This lecture focuses on Role-Based Access Control (RBAC) in Kubernetes, providing detailed steps on how to create roles and link users to those roles. Here's a summary:
+
+### Role Creation
+1. **Create Role Definition File**: 
+   - Define a role object with API version `rbac.authorization.k8s.io/v1` and kind set to `Role`.
+   - Specify the rules for the role, including API groups, resources, and verbs (actions).
+   - Example: Allow developers to access pods for actions like list, get, create, and delete.
+
+2. **Create Role**: 
+   - Use the `kubectl create role` command to create the role based on the definition file.
+
+### Role Binding
+1. **Create Role Binding Definition File**:
+   - Define a role binding object with kind set to `RoleBinding`.
+   - Specify the user details in the `subjects` section.
+   - Reference the role created earlier in the `roleRef` section.
+
+2. **Create Role Binding**: 
+   - Use the `kubectl create rolebinding` command to create the role binding based on the definition file.
+
+### Namespace Scope
+- Roles and role bindings are scoped to namespaces.
+- Specify the namespace within the metadata of the definition files to limit access to resources within that namespace.
+
+### Viewing Roles and Role Bindings
+- Use `kubectl get roles` to view created roles.
+- Use `kubectl get rolebindings` to list role bindings.
+- Use `kubectl describe role <role_name>` to view details about a specific role.
+- Use `kubectl describe rolebinding <rolebinding_name>` to view details about a specific role binding.
+
+### Checking User Permissions
+- Use `kubectl auth can-i` command to check if a user has permission to perform specific actions on resources.
+- Administrators can impersonate other users to check their permissions using the `--as` option.
+- Namespace can be specified to check permissions within a specific namespace.
+
+### Resource Names
+- Access to specific resources within a namespace can be controlled by adding a `resourceNames` field to the rule definition.
+
+### Conclusion
+- RBAC provides a structured approach to access control in Kubernetes, allowing fine-grained control over user permissions.
+- Testing user permissions and resource access is facilitated using `kubectl auth can-i` command.
+- Resource names can be used to further refine access control at the resource level.
+
+The lecture concludes by encouraging learners to practice working with RBAC through practice exercises.
+
+
+=======================================================================================
+
+
 
 In this section, we will take a look at RBAC
 
