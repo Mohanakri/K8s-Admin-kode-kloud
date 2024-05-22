@@ -1,6 +1,32 @@
 # Pre-requisite DNS
 
   - Take me to [Lecture](https://kodekloud.com/topic/prerequsite-dns/)
+In this introductory lecture on DNS for Linux beginners, the instructor covers fundamental concepts and commands for DNS configuration on Linux hosts:
+
+1. **Introduction to DNS**: The instructor introduces DNS (Domain Name System) and its importance in translating domain names to IP addresses.
+
+2. **Basic Configuration**: Two computers, A and B, are part of the same network and assigned IP addresses. The instructor explains how to assign a name (`db`) to system B (`192.168.1.11`) in the `/etc/hosts` file on system A for easier access.
+
+3. **Name Resolution**: The concept of name resolution is explained, where the system resolves hostnames to IP addresses using the `/etc/hosts` file or a DNS server.
+
+4. **DNS Server Configuration**: The instructor explains how to configure a DNS server on Linux by specifying the DNS server's IP address in the `/etc/resolv.conf` file on each host.
+
+5. **Hostname Resolution Order**: The lecture discusses the order in which the system resolves hostnames, first checking the `/etc/hosts` file and then querying the DNS server, which can be configured in the `/etc/nsswitch.conf` file.
+
+6. **Domain Names**: The lecture delves into the structure of domain names, including top-level domains (TLDs) and subdomains, and explains how they are resolved using DNS servers.
+
+7. **Search Domain Configuration**: The instructor demonstrates how to configure a search domain in the `/etc/resolv.conf` file to append domain names when resolving hostnames.
+
+8. **Record Types**: Different types of DNS records (A, AAAA, CNAME) are explained, along with their purposes.
+
+9. **Testing DNS Resolution**: Tools like `nslookup` and `dig` are introduced for testing DNS resolution.
+
+10. **Upcoming Practice Exercises**: The lecture concludes by mentioning upcoming exercises where students will practice DNS configuration and troubleshooting in a lab environment.
+
+Throughout the lecture, practical examples and real-world scenarios are used to illustrate concepts, making it accessible for beginners.
+
+=================================================================================================
+
 
 In this section, we will take a look at **DNS in the Linux**
 
