@@ -1,6 +1,33 @@
 # Storage Class
 
   - Take me to [Lecture](https://kodekloud.com/topic/storage-class/)
+In this lecture, the focus is on Storage Classes in Kubernetes, which enable dynamic provisioning of volumes, eliminating the need for manual volume creation.
+
+Key points covered include:
+
+1. **Static Provisioning vs. Dynamic Provisioning**: Previously, to use persistent storage, administrators had to manually provision disks and create PV definitions. With dynamic provisioning, storage is automatically provisioned when needed.
+
+2. **Introduction to Storage Classes**: Storage Classes allow administrators to define provisioners (e.g., Google Storage) for automatic storage provisioning. This enables dynamic provisioning of volumes.
+
+3. **Creating Storage Classes**: To create a Storage Class, an object is defined with API version `storage.k8.io/v1`, a name, and a provisioner (e.g., `Kubernetes.io/gce-pd` for Google Cloud).
+
+4. **Using Storage Classes with PVCs**: By specifying the Storage Class name in the PVC definition, Kubernetes knows which provisioner to use for dynamic volume provisioning.
+
+5. **Automated PV Creation**: When a PVC is created, the associated Storage Class automatically provisions a new disk on the cloud provider (e.g., GCP), creates a PV, and binds the PVC to that volume.
+
+6. **Available Provisioners**: Various provisioners are available for different cloud providers and storage types, such as AWS EBS, Azure File, Azure Disk, CephFS, Portworx, and ScaleIO.
+
+7. **Customizing Storage Classes**: Parameters specific to the provisioner can be passed in, such as disk type (standard, SSD), replication mode (none, regional PD), etc.
+
+8. **Creating Different Classes of Service**: Different Storage Classes can be created for different types of disks (e.g., silver, gold, platinum) to provide varying levels of service based on requirements.
+
+Overall, Storage Classes enable administrators to define different classes of service and simplify PVC creation by specifying the desired class of storage needed for volumes.
+
+
+======================================================================================================
+
+
+
 
 In this section, we will take a look at **Storage Class**
 
