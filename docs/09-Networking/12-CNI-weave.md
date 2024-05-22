@@ -1,6 +1,29 @@
 # CNI weave
   
   - Take me to [Lecture](https://kodekloud.com/topic/cni-weave/)
+In this lecture, the focus is on explaining how the Weaveworks Weave CNI plugin works within a Kubernetes cluster. Here's a summary:
+
+1. **Introduction**: The instructor begins by highlighting the importance of understanding networking solutions based on CNI, such as Weave, within Kubernetes.
+
+2. **Comparison to Manual Setup**: The lecture starts with a comparison to a manually set up networking solution, emphasizing the limitations of manual routing tables in larger environments with many nodes and pods.
+
+3. **Analogy to Shipping**: An analogy to shipping logistics is provided to illustrate how Weave operates within a Kubernetes cluster. Weave agents act as shipping agents, managing communication and routing between different sites (nodes) and departments (pods).
+
+4. **Weave Functionality**: Weave deploys an agent or service on each node, which communicates with other agents to exchange information about the cluster's topology. It creates its own bridge on the nodes, assigns IP addresses to each network, and ensures correct routing paths for packets.
+
+5. **Packet Routing**: When a packet is sent from one pod to another on a different node, Weave intercepts the packet, encapsulates it with new source and destination information, sends it across the network, and then routes it to the correct destination pod.
+
+6. **Deployment**: Weave can be deployed manually as services or daemons on each node, or more conveniently as pods within the Kubernetes cluster. A single `kubectl apply` command can deploy all necessary components, including Weave peers as a daemon set, ensuring deployment on all nodes.
+
+7. **Troubleshooting**: For troubleshooting purposes, logs from Weave pods can be accessed using the `kubectl logs` command.
+
+The lecture concludes by encouraging learners to explore Weave deployment in Kubernetes clusters and provides guidance on troubleshooting.
+
+
+
+====================================================================
+
+
 
 In this section, we will take a look at "CNI Weave in the Kubernetes Cluster"
 
