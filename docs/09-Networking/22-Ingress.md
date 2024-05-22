@@ -1,6 +1,51 @@
 # Ingress
 
   - Take me to [Lecture](https://kodekloud.com/topic/ingress/)
+In this lecture, the instructor covers the concept of ingress in Kubernetes, explaining its purpose, differences from services, and its configuration. Here are the key points:
+
+### Introduction to Services and Ingress
+- **Services vs. Ingress**: Services expose applications within a Kubernetes cluster, while ingress manages external access.
+- **Scenario**: An online store with applications (e.g., a web store and a video service).
+
+### Deploying Applications
+1. **Application Deployment**: The web store is deployed as a pod and exposed via a service.
+2. **Database Setup**: MySQL database as a pod, exposed via a ClusterIP service.
+3. **External Access**: The web application is exposed using a NodePort service, accessible via a high port number.
+
+### Challenges with NodePort and Load Balancer
+- Users must use IP and port numbers to access services, which is not user-friendly.
+- High costs and complexity arise with multiple load balancers for different services.
+
+### Introducing Ingress
+- **Purpose**: Provides a single entry point to manage traffic routing, SSL, and URL-based routing.
+- **Configuration**: Managed within Kubernetes using native definition files.
+
+### How Ingress Works
+1. **Ingress Controller**: A special build of solutions like NGINX, HAProxy, or Traefik deployed as a pod.
+2. **Deployment**: Requires a deployment definition, a service to expose it, a config map for settings, and a service account with permissions.
+3. **Ingress Resources**: Define rules for traffic routing based on URL paths or domain names.
+
+### Creating Ingress Resources
+1. **Basic Ingress Resource**: Routes all traffic to a single backend service.
+2. **URL-based Routing**: Routes traffic to different services based on URL paths.
+3. **Domain-based Routing**: Routes traffic based on different hostnames.
+
+### Practical Configuration
+- **Ingress Definition File**: Specifies rules, backend services, and optionally, default backends for handling unmatched paths.
+- **Examples**: Configurations for splitting traffic by URL paths and hostnames, demonstrating how to handle multiple services within a cluster.
+
+### Summary
+- **Ingress Controllers**: Deploy and configure ingress controllers like NGINX.
+- **Ingress Resources**: Use Kubernetes definition files to create rules for traffic routing.
+- **Lab Practice**: Exercises include exploring pre-deployed environments and deploying ingress controllers from scratch.
+
+This lecture emphasizes the benefits of using ingress for efficient traffic management and simplified configurations within Kubernetes.
+
+
+=====================================================================================================
+
+
+
 
 In this section, we will take a look at **Ingress**
 
