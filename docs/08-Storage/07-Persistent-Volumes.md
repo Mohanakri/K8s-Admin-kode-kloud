@@ -1,6 +1,14 @@
 # Persistent Volumes
 
   - Take me to [Lecture](https://kodekloud.com/topic/persistent-volumes-4/)
+In this lecture, Mumshad introduces persistent volumes in Kubernetes as a solution for centrally managing storage across a cluster. Unlike volumes configured within pod definition files, persistent volumes allow administrators to create a cluster-wide pool of storage that users can access using persistent volume claims (PVCs).
+
+Mumshad explains the process of creating a persistent volume by starting with a base template and updating the API version and kind to "persistent volume." He discusses setting access modes, capacity (amount of storage), and volume type. He demonstrates using the hostPath option for local storage on the node, cautioning against its use in production environments. Commands for creating and listing persistent volumes using `kubectl` are provided.
+
+Lastly, Mumshad highlights the importance of replacing the hostPath option with supported storage solutions like AWS Elastic Block Store in production environments. He concludes by mentioning that the next lecture will cover how to use persistent volume claims to claim volumes configured with persistent volumes.
+================================================================================================================================
+
+
 
 In this section, we will take a look at **Persistent Volumes**
 
