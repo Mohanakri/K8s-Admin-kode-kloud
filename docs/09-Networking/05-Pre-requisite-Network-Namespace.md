@@ -1,6 +1,34 @@
 # Pre-requisite Network Namespaces
 
   - Take me to [Lecture](https://kodekloud.com/topic/prerequsite-network-namespaces/)
+This video provides a comprehensive introduction to network namespaces in Linux, emphasizing their role in containerization for network isolation. Here's a summary of the main points covered:
+
+1. **Introduction to Network Namespaces**: Network namespaces are likened to rooms in a house, providing isolation for processes and networks. Containers, like Docker, utilize namespaces for network isolation.
+
+2. **Understanding Namespaces**: Namespaces allow processes within a container to perceive themselves as isolated from the host and other containers. The host, however, maintains visibility into all namespaces and processes.
+
+3. **Network Isolation**: Network namespaces ensure that containers have no visibility into the host's network interfaces, routing, or ARP tables. Containers operate within their own network namespace with virtual interfaces.
+
+4. **Creating Network Namespaces**: The `ip netns add` command is used to create network namespaces. Each namespace operates independently, with its own set of virtual interfaces.
+
+5. **Connecting Namespaces**: Virtual Ethernet pairs, or "virtual cables," are used to connect namespaces. The `ip link set` command attaches interfaces to specific namespaces, ensuring network isolation.
+
+6. **Establishing Connectivity**: Virtual bridges are created within the host to connect multiple namespaces, forming a virtual network. Virtual cables connect namespaces to the bridge, enabling communication between them.
+
+7. **Configuring Routing**: Routing tables are used to establish connectivity between namespaces and external networks. NAT (Network Address Translation) is configured using `iptables` to enable communication between namespaces and external networks.
+
+8. **Accessing External Networks**: Default gateways are configured to allow namespaces to access external networks. This involves routing traffic through the host's interface to reach external networks.
+
+9. **Accessing Container Services**: Port forwarding is set up using `iptables` to allow access to services running within namespaces from external networks. This involves forwarding traffic from specific ports on the host to ports within the namespace.
+
+10. **Conclusion**: The video concludes by summarizing the steps involved in configuring network namespaces for network isolation and enabling communication between namespaces and external networks.
+
+Overall, the video provides a thorough overview of network namespaces in Linux and demonstrates practical configurations for network isolation and connectivity.
+
+====================================================================================================================
+
+
+
 
 In this section, we will take a look at **Network Namespaces**
 
