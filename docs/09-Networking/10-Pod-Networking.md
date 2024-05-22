@@ -1,6 +1,32 @@
 # Pod Networking
 
   - Take me to [Lecture](https://kodekloud.com/topic/pod-networking/)
+In this lecture, the focus is on pod networking within a Kubernetes cluster. Here's a summary:
+
+1. **Overview**: After setting up Kubernetes master and worker nodes and configuring networking between them, the next step is to address pod networking. This involves ensuring that pods can communicate with each other within and across nodes.
+
+2. **Kubernetes Requirements**: Kubernetes expects every pod to have a unique IP address, allowing communication between pods within the same node and across nodes without the need for NAT rules.
+
+3. **Solution Approach**: Instead of relying on built-in solutions, the lecture proposes a manual approach using networking concepts like namespaces, routing, and IP address management. A script is written to assign IP addresses, create virtual network interfaces, and set up routing tables for pod communication.
+
+4. **Implementation Steps**: The process involves:
+   - Creating a bridge network on each node.
+   - Assigning unique IP addresses to bridge interfaces.
+   - Writing a script to configure pod networking for each container.
+   - Manually executing the script on each node for pod connectivity.
+
+5. **Scaling Challenges**: While the manual approach works for small setups, it becomes cumbersome at scale. To automate pod networking setup, the Container Network Interface (CNI) serves as a middleman between Kubernetes and the networking script, ensuring standardization and automation.
+
+6. **CNI Integration**: The script is modified to meet CNI standards, with sections for adding and deleting containers from the network. The container runtime invokes the script based on CNI configuration, automating pod networking setup.
+
+7. **Next Steps**: The lecture concludes by highlighting upcoming topics, including configuring CNI in Kubernetes and exploring other networking solutions.
+
+Overall, the lecture provides a comprehensive understanding of pod networking concepts and outlines a manual approach to configure pod communication, paving the way for automation using CNI in Kubernetes.
+
+
+==================================================================================
+
+
 
 In this section, we will take a look at **Pod Networking**
 
