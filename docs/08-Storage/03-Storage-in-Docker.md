@@ -2,6 +2,26 @@
 
   - Take me to [Lecture](https://kodekloud.com/topic/storage-in-docker-2/)
 
+
+In this lecture, advanced Docker concepts regarding storage drivers and file systems are explored. Docker's storage mechanisms and file system management within containers are discussed in detail.
+
+First, the instructor explains how Docker stores data on the local file system, typically within the `/var/lib/docker/` directory. Within this directory, Docker organizes data into folders such as `containers`, `images`, and `volumes`.
+
+The lecture proceeds to illustrate Docker's layered architecture, wherein each line of instruction in a Dockerfile generates a new layer in the Docker image. This layered approach facilitates faster image builds and efficient disk space utilization by reusing cached layers during subsequent builds.
+
+Next, the instructor describes Docker's copy-on-write mechanism, where modifications to files within a container result in the creation of a new writable layer. These changes are ephemeral and persist only as long as the container is active.
+
+To preserve data beyond the container's lifecycle, the lecture introduces persistent volumes. Docker volumes, created using the `docker volume create` command, provide a means to store data independently of containers. Two types of mounts—volume mounts and bind mounts—are explained, with examples of how to mount volumes within containers.
+
+Lastly, the lecture covers Docker's storage drivers, which are responsible for enabling the layered architecture and managing file system operations. Common storage drivers like AUFS, VTRFS, ZFS, and device mapper are mentioned, with considerations for selecting the appropriate driver based on the underlying operating system.
+
+The lecture concludes by encouraging further exploration of storage drivers and their performance characteristics, providing links for additional reading.
+
+
+
+============================================================================================
+
+
 In this section, we will take a look at docker **Storage driver and Filesystem**.
 
   - We are going to see where and how Docker stores data and how it manages filesystem of the containers.
