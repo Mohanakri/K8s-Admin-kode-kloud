@@ -1,6 +1,27 @@
 # Persistent Volume Claims
 
   - Take me to [Lecture](https://kodekloud.com/topic/persistent-volume-claims-4/)
+In this lecture, the focus is on Persistent Volume Claims (PVCs) in Kubernetes, following the creation of a Persistent Volume (PV) in the previous lecture. Mumshad explains that PVs and PVCs are separate objects in the Kubernetes namespace. Administrators create PVs, and users create PVCs to utilize the storage.
+
+Key points covered include:
+
+1. **Relationship Between PVs and PVCs**: Each PVC is bound to a single PV. Kubernetes matches PVCs to PVs based on requests and properties like capacity, access modes, and storage class.
+
+2. **Binding Process**: Kubernetes tries to find a PV with sufficient capacity and matching properties. If multiple matches are possible, labels and selectors can be used for specific bindings. Smaller claims may bind to larger volumes if criteria match.
+
+3. **Pending State**: If no suitable PVs are available, PVCs remain in a pending state until new volumes are accessible.
+
+4. **Creating PVCs**: Mumshad demonstrates creating a PVC named "My Claim" with specific specifications using `kubectl create` command.
+
+5. **Viewing and Deleting PVCs**: The lecture shows how to view and delete PVCs using `kubectl get` and `kubectl delete` commands, respectively.
+
+6. **Handling PVs Upon PVC Deletion**: Mumshad explains the options for handling PVs upon PVC deletion: retain, delete, or recycle.
+
+The lecture concludes by encouraging learners to practice configuring and troubleshooting persistent volumes and volume claims in Kubernetes.
+
+==================================================================================================
+
+
 
 In this section, we will take a look at **Persistent Volume Claim**
 
