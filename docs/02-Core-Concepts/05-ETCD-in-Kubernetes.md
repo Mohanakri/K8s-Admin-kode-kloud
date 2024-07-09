@@ -120,7 +120,7 @@ So for the commands I showed in the previous video to work you must specify the 
 
 kubectl exec etcd-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl get / --prefix --keys-only --limit=10 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt  --key /etc/kubernetes/pki/etcd/server.key" 
 
-
+https://github.com/techiescamp/kubernetes-projects/tree/main/01-kubernetes-the-hard-way-aws
 
 K8s Reference Docs:
 - https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
