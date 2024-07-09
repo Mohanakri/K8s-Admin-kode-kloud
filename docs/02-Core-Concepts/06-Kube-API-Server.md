@@ -88,3 +88,4 @@ K8s Reference Docs:
 - https://kubernetes.io/docs/concepts/overview/kubernetes-api/
 - https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/
 - https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/
+https://github.com/techiescamp/kubernetes-projects/tree/main/01-kubernetes-the-hard-way-aws
