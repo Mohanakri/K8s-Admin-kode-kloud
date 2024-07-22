@@ -3,22 +3,22 @@
   
 Solutions to practice test - OS Upgrades
 - Let us explore the environment first. How many nodes do you see in the cluster?
+
+  Including the controlplane and worker nodes.
   
   <details>
-  ```
   $ kubectl get nodes
-  ```
   </details>
   
 - How many applications do you see hosted on the cluster?
+
+   Check the number of deployments in the default namespace.
   
   <details>
-  ```
   $ kubectl get deploy
-  ```
   </details>
   
-- Run the command 'kubectl get pods -o wide' and get the list of nodes the pods are placed on
+- Which nodes are the applications hosted on?
   
   <details>
   ```
@@ -26,7 +26,7 @@ Solutions to practice test - OS Upgrades
   ```
   </details>
   
-- Run the command kubectl drain node01 --ignore-daemonsets
+- We need to take node01 out for maintenance. Empty the node of all applications and mark it unschedulable.
   
   <details>
   ```
@@ -34,7 +34,7 @@ Solutions to practice test - OS Upgrades
   ```
   </details>
   
-- Run the command 'kubectl get pods -o wide' and get the list of nodes the pods are placed on
+- What nodes are the apps on now?
   
   <details>
   ```
@@ -42,7 +42,7 @@ Solutions to practice test - OS Upgrades
   ```
   </details>
   
-- Run the command kubectl uncordon node01
+- The maintenance tasks have been completed. Configure the node node01 to be schedulable again.
   
   <details>
   ```
@@ -50,7 +50,7 @@ Solutions to practice test - OS Upgrades
   ```
   </details>
   
-- Run the command kubectl get pods -o wide
+- How many pods are scheduled on node01 now in the default namespace?
   
   <details>
   ```
@@ -66,7 +66,9 @@ Solutions to practice test - OS Upgrades
   ```
   </details>
   
-- Use the command kubectl describe node master and look under taint section to check if it has any taints.
+- Why are the pods placed on the controlplane node?
+
+  Check the controlplane node details.
   
   <details>
   ```
@@ -99,11 +101,11 @@ Solutions to practice test - OS Upgrades
   ```
   </details>
     
-- What would happen to hr-app if node02 is drained forcefully?
+- What would happen to hr-app if node01 is drained forcefully?
   
   <details>
   ```
-  $ kubectl drain node02 --ignore-daemonsets --force
+  $ kubectl drain node01 --ignore-daemonsets --force
   hr-app will be lost forever
   ```
   </details>
@@ -112,15 +114,19 @@ Solutions to practice test - OS Upgrades
 
   <details>
   ```
-  $ kubectl drain node02 --ignore-daemonsets --force
+  $ kubectl drain node01 --ignore-daemonsets --force
   ```
   </details>
   
-- Run the command kubectl cordon node03
+- hr-app is a critical app and we do not want it to be removed and we do not want to schedule any more pods on node01.
+  Mark node01 as unschedulable so that no new pods are scheduled on this node.
+
+
+  Make sure that hr-app is not affected.
   
   <details>
   ```
-  $ kubectl cordon node03
+  $ kubectl cordon node01
   ```
   </details>
 
