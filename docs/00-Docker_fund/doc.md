@@ -102,7 +102,7 @@ Here’s a list of common Docker commands, categorized by purpose:
 
 ### 4. **Dockerfile Commands**
 
-   - `FROM <image>`: Specifies the base image.
+   - `FROM <image>`: Specifies the base image.  command:1.docker image ls > txt.txt 2.grep 'ago' txt.txt | wc -l
    - `COPY <src> <dest>`: Copies files or directories to the image.
    - `RUN <command>`: Executes commands in the image.
    - `CMD <command>`: Specifies the default command to run in a container.
